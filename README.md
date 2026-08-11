@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Parv Jain / Abstergo — Portfolio Multiverse
 
-## Getting Started
+One production portfolio, two authored interfaces. Every route presents the same identity, copy, systems, interface experiments, practice, capability, timeline, and contact destinations while changing the visual and interaction system completely.
 
-First, run the development server:
+| Route | Interface | Purpose | Search policy |
+| --- | --- | --- | --- |
+| `/` | Editorial Ledger | Warm-charcoal, serif-led editorial record | Indexed; canonical |
+| `/atlas` | Systems Atlas | Dark architectural product-systems dossier | `noindex, follow`; canonicalizes to `/` |
+
+A fixed bottom-right switch links the two styles with real Next.js routes.
+
+## Edit content once
+
+All substantive portfolio content and destinations live in the immutable, typed contract at `src/app/data/portfolio.ts`. Edit that file to update every interface. Do not place portfolio copy directly in a route renderer; route-local text is reserved for decorative interface language such as mission coordinates or register labels.
+
+`scripts/verify-mode-content.mjs` transpiles the canonical TypeScript contract and checks the static production HTML for all routes. It proves project counts, canonical copy, section IDs and order, project/source/social/resume URLs, and mode SEO policy.
+
+## Architecture
+
+- `src/app/page.tsx` renders Editorial Ledger as a Server Component, scoped by `minimal.module.css`.
+- `src/app/atlas/page.tsx` renders Systems Atlas as a Server Component, scoped by `globals.css`.
+- `src/app/components/mode-switcher.tsx` is shared, server-rendered route chrome (fixed dock).
+- `src/app/components/portfolio-json-ld.tsx` is the single structured-data factory.
+- `src/app/components/site-header.tsx` remains Atlas’s narrow client boundary for its mobile dialog.
+- Each mode has a distinct static 1200×630 Open Graph image route.
+
+## Development and production QA
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production gates:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run verify:modes
+git diff --check
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`verify:modes` reads `.next/server/app/*.html` by default, so run it after `build`. Set `PORTFOLIO_URL` to validate a running deployment instead.
 
-## Learn More
+Browser QA covers every route at 1440×1000, 1280×800, 1024×768, 768×1024, 430×932, 390×844, and 360×800, plus back/forward mode navigation, metadata, and social-card rendering.
 
-To learn more about Next.js, take a look at the following resources:
+## Branding and captures
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Brand geometry and usage live in `BRAND.md`. Run `npm run brand:generate` after changing the mark script. Mode Open Graph images are static routes under each page directory.
