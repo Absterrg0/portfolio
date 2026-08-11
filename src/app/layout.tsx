@@ -23,13 +23,10 @@ const newsreader = Newsreader({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://abstergo.fyi/"),
-  title: {
-    default: "Parv Jain — Product & Full-stack Developer",
-    template: "%s — Parv Jain / Abstergo",
-  },
+  title: "Parv Jain",
   description:
     "Selected product systems, frontend interfaces, and developer tools by Parv Jain—a full-stack developer in Bengaluru building as Abstergo.",
-  applicationName: "Parv Jain / Abstergo",
+  applicationName: "Parv Jain",
   keywords: [
     "Parv Jain",
     "Abstergo",
@@ -42,17 +39,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Parv Jain", url: "https://abstergo.fyi/" }],
   creator: "Parv Jain",
-  publisher: "Parv Jain / Abstergo",
+  publisher: "Parv Jain",
   category: "technology",
   alternates: { canonical: "/" },
   manifest: "/manifest.webmanifest",
   formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
-    title: "Parv Jain — Editorial Ledger",
+    title: "Parv Jain",
     description:
-      "Selected product systems and interface work by Parv Jain / Abstergo.",
+      "Selected product systems and interface work by Parv Jain.",
     url: "/",
-    siteName: "Parv Jain / Abstergo",
+    siteName: "Parv Jain",
     locale: "en_IN",
     type: "website",
     images: [
@@ -60,19 +57,19 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Parv Jain Editorial Ledger portfolio",
+        alt: "Parv Jain",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parv Jain — Editorial Ledger",
-    description: "Selected product systems and interface work by Parv Jain / Abstergo.",
+    title: "Parv Jain",
+    description: "Selected product systems and interface work by Parv Jain.",
     creator: "@notabbytwt",
     images: [
       {
         url: "/opengraph-image",
-        alt: "Parv Jain Editorial Ledger portfolio",
+        alt: "Parv Jain",
       },
     ],
   },

@@ -7,24 +7,23 @@ import { portfolioContent as content } from "./data/portfolio";
 import styles from "./minimal.module.css";
 
 export const metadata: Metadata = {
-  title: "Editorial Ledger — Product & Full-stack Developer",
-  description: "Parv Jain’s product systems and interface work, rendered as a quiet editorial ledger.",
+  description: "Parv Jain’s product systems and interface work.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Parv Jain — Editorial Ledger",
-    description: "The same product systems and interface work, through a restrained editorial interface.",
+    title: "Parv Jain",
+    description: "Selected product systems and interface work by Parv Jain.",
     url: "/",
-    siteName: "Parv Jain / Abstergo",
+    siteName: "Parv Jain",
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Parv Jain Editorial Ledger portfolio" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Parv Jain" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parv Jain — Editorial Ledger",
-    description: "One body of product work, rendered as an editorial ledger.",
+    title: "Parv Jain",
+    description: "Selected product systems and interface work by Parv Jain.",
     creator: "@notabbytwt",
-    images: [{ url: "/opengraph-image", alt: "Parv Jain Editorial Ledger portfolio" }],
+    images: [{ url: "/opengraph-image", alt: "Parv Jain" }],
   },
 };
 

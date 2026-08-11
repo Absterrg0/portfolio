@@ -9,25 +9,24 @@ import { SiteHeader } from "../components/site-header";
 import { portfolioContent as content } from "../data/portfolio";
 
 export const metadata: Metadata = {
-  title: "Systems Atlas — Product & Full-stack Developer",
-  description: "Parv Jain’s product systems and interface work, rendered as a dark architectural dossier.",
+  description: "Parv Jain’s product systems and interface work.",
   alternates: { canonical: "/" },
   robots: { index: false, follow: true },
   openGraph: {
-    title: "Parv Jain — Systems Atlas",
-    description: "The same product systems and interface work, through a dark architectural interface.",
+    title: "Parv Jain",
+    description: "Selected product systems and interface work by Parv Jain.",
     url: "/atlas",
-    siteName: "Parv Jain / Abstergo",
+    siteName: "Parv Jain",
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/atlas/opengraph-image", width: 1200, height: 630, alt: "Parv Jain Systems Atlas portfolio" }],
+    images: [{ url: "/atlas/opengraph-image", width: 1200, height: 630, alt: "Parv Jain" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parv Jain — Systems Atlas",
-    description: "One body of product work, rendered as a systems atlas.",
+    title: "Parv Jain",
+    description: "Selected product systems and interface work by Parv Jain.",
     creator: "@notabbytwt",
-    images: [{ url: "/atlas/opengraph-image", alt: "Parv Jain Systems Atlas portfolio" }],
+    images: [{ url: "/atlas/opengraph-image", alt: "Parv Jain" }],
   },
 };
 
