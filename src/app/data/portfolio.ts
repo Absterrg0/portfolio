@@ -30,7 +30,7 @@ export type InterfaceProject = Readonly<{
 
 const systems = [
   {
-    id: "okito", index: "SYS.01", title: "Okito", category: "Payment infrastructure / Current focus",
+    id: "okito", index: "SYS.01", title: "Okito", category: "Payment infrastructure / Solana",
     description: "A Web3 payment gateway on Solana, designed around a direct developer and user experience.",
     stack: ["Next.js", "TypeScript", "Solana", "Web3", "React", "Tailwind"],
     image: "/images/projects/okito.webp", imageAlt: "Okito payment product interface", imageWidth: 2400, imageHeight: 1500,
@@ -88,7 +88,7 @@ export const portfolioContent = {
     location: "Bengaluru, India",
     availability: "Available for work",
     availabilityLong: "Available for internships, full-time and freelance",
-    focus: "Okito / Solana",
+    focus: "Last shipped — Okito",
     timeZone: "Asia/Kolkata",
   },
   navigation: [

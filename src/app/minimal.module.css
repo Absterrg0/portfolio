@@ -164,12 +164,11 @@
   .identity { padding-inline: 16px; }
   .identity small { display: none; }
   .keyArt { height: 240px; }
-  .keyArt > div span:last-child { display: none; }
   .dossier { grid-template-columns: 112px 1fr; min-height: 148px; }
   .portrait { width: 80px; height: 80px; }
   .dossierName { padding: 16px; }
   .dossierName h1 { font-size: 36px; }
-  .dossier dl { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); border-left: 0; }
+  .dossier dl { grid-column: 1 / -1; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--rule); border-left: 0; }
   .dossier dl > div { display: flex; min-width: 0; min-height: 70px; flex-direction: column; align-items: flex-start; justify-content: center; padding: 10px; border-right: 1px solid var(--rule); border-bottom: 0; }
   .dossier dl > div:last-child { border-right: 0; }
   .dossier dd { margin-top: 6px; font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }

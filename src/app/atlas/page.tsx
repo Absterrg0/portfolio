@@ -132,7 +132,7 @@ export default function AtlasPage() {
           <div className="hero__status">
             <div><span>STATUS</span><strong><i /> {content.identity.availability}</strong></div>
             <div><span>LOCAL TIME / INDIA</span><strong><LocalTime initialTime={currentTime} /></strong></div>
-            <div><span>CURRENT FOCUS</span><strong>{content.identity.focus}</strong></div>
+            <div><span>RECENT</span><strong>{content.identity.focus}</strong></div>
           </div>
         </section>
 

@@ -64,7 +64,7 @@ export default function HomePage() {
         <section className={styles.introduction} aria-labelledby="minimal-hero-title">
           <div className={styles.keyArt}>
             <Image src="/brand/pj-hinge-key-art.webp" alt="" fill priority sizes="(max-width: 768px) 100vw, 960px" />
-            <div><span>VOLUME / 01</span><span>{content.modes.statement}</span></div>
+            <div><span>VOLUME / 01</span></div>
           </div>
           <div className={styles.dossier}>
             <Image className={styles.portrait} src={content.about.portrait} alt={content.about.portraitAlt} width={184} height={184} priority />
@@ -73,8 +73,7 @@ export default function HomePage() {
             </div>
             <dl>
               <div><dt>Status</dt><dd>{content.identity.availability}</dd></div>
-              <div><dt>Focus</dt><dd>{content.identity.focus}</dd></div>
-              <div><dt>Register</dt><dd>{content.modes.callout}</dd></div>
+              <div><dt>Recent</dt><dd>{content.identity.focus}</dd></div>
             </dl>
           </div>
           <article className={styles.lede}>
