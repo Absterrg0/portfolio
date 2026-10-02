@@ -73,7 +73,7 @@ for (const [route, html] of pages) {
     const systemCount = count(html, "data-content-kind=\"system\"");
     const interfaceCount = count(html, "data-content-kind=\"interface\"");
     const timelineCount = count(html, "data-content-kind=\"timeline\"");
-    if (systemCount !== 4) failures.push(`${route}: expected 4 systems, found ${systemCount}`);
+    if (systemCount !== 5) failures.push(`${route}: expected 5 systems, found ${systemCount}`);
     if (interfaceCount !== 9) failures.push(`${route}: expected 9 interfaces, found ${interfaceCount}`);
     if (timelineCount !== content.timeline.length) failures.push(`${route}: expected ${content.timeline.length} timeline records, found ${timelineCount}`);
     if (count(html, "data-content-kind=\"practice\"") !== 1) failures.push(`${route}: Okito SDK record count is not 1`);
@@ -84,6 +84,6 @@ for (const [route, html] of pages) {
 
 if (failures.length) throw new Error(`Mode parity failed:\n- ${failures.join("\n- ")}`);
 console.log(`Mode parity verified against ${process.env.PORTFOLIO_URL ?? ".next static production HTML"}`);
-console.log(`✓ 4 systems · 9 interfaces · Okito SDK · 4 capability groups · ${content.timeline.length} timeline records`);
+console.log(`✓ 5 systems · 9 interfaces · Okito SDK · 4 capability groups · ${content.timeline.length} timeline records`);
 console.log("✓ canonical hero/about/contact copy, IDs, order, email, social, résumé, project and source URLs");
 console.log("✓ /atlas noindex+follow and both routes canonicalize to /");

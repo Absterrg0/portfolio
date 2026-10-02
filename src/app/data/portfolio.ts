@@ -1,7 +1,7 @@
 export type WorkLink = Readonly<{ label: string; href: string }>;
 
 export type SystemProject = Readonly<{
-  id: "okito" | "droplert" | "decentrawork" | "justdraw";
+  id: "okito" | "droplert" | "decentrawork" | "justdraw" | "circe";
   index: string;
   title: string;
   category: string;
@@ -56,6 +56,13 @@ const systems = [
     stack: ["React", "Canvas API", "TypeScript", "Tailwind", "JavaScript"],
     image: "/images/projects/justdraw.webp", imageAlt: "JustDraw creative drawing workspace", imageWidth: 2400, imageHeight: 1500,
     links: [{ label: "Live product", href: "https://justdraw.abstergo.fyi/" }, { label: "Source", href: "https://github.com/Absterrg0/JustDraw" }],
+  },
+  {
+    id: "circe", index: "SYS.05", title: "Circe", category: "Coding-agent control plane / Voice",
+    description: "A voice-first control plane that routes a spoken request to the machine and coding agent that own the work, grounded in real projects instead of guesses.",
+    stack: ["TypeScript", "T3 Code", "React", "Electron", "Node.js"],
+    image: "/images/projects/circe.webp", imageAlt: "Circe voice control plane landing interface", imageWidth: 2400, imageHeight: 1500,
+    links: [{ label: "Live site", href: "https://heycirce.com" }, { label: "Source", href: "https://github.com/Absterrg0/circe" }],
   },
 ] as const satisfies readonly SystemProject[];
 
