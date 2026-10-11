@@ -151,9 +151,9 @@ export const portfolioContent = {
     profileLine: "Full-stack Developer · Bengaluru, India",
   },
   timeline: [
-    { id: "tb10", index: "EXP.01", date: "FEB 2026—PRESENT", title: "TB10 Platform", role: "Full-stack Developer / Game Infrastructure / Remote", description: "Owns the architecture and development of a full-stack tournament platform: a React and Tailwind frontend, Node.js game logic and APIs, scalable workflows, and real-time state synchronization for multiplayer-style experiences." },
+    { id: "tb10", index: "EXP.01", date: "JAN 2026—JUN 2026", title: "TB10 Platform", role: "Full-stack Developer / Game Infrastructure / Remote", description: "Owned the architecture and development of a full-stack tournament platform: a React and Tailwind frontend, Node.js game logic and APIs, scalable workflows, and real-time state synchronization for multiplayer-style experiences." },
     { id: "octasol", index: "EXP.02", date: "JUL 2025—AUG 2025", title: "Octasol", role: "Freelancer / Escrow Workflow / Remote", description: "Built a GitHub escrow workflow and Solana smart contracts for secure payments, contributing to on-chain execution, testing, and workflow automation." },
-    { id: "blolabel", index: "EXP.03", date: "NOV 2024—FEB 2025", title: "Blolabel", role: "Full-stack Developer / Remote", description: "Built a document annotation platform with structured labeling, editing, layered metadata, and real-time feedback; designed document storage and annotation workflows; implemented HLS video processing with AWS S3 and MediaConvert; and integrated Cleanvoice AI audio filtering." },
+    { id: "blolabel", index: "EXP.03", date: "NOV 2024—JUN 2025", title: "Blolabel", role: "Full-stack Developer / Remote", description: "Built a document annotation platform with structured labeling, editing, layered metadata, and real-time feedback; designed document storage and annotation workflows; implemented HLS video processing with AWS S3 and MediaConvert; and integrated Cleanvoice AI audio filtering." },
     { id: "education", index: "EDU.01", date: "2023—2027", title: "M.S. Ramaiah Institute of Technology", role: "B.Tech / Computer Science Engineering / Bengaluru", description: "Bachelor of Technology in Computer Science Engineering." },
   ],
   contact: {
