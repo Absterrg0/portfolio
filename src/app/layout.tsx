@@ -1,88 +1,54 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Manrope, Newsreader } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
+import { site } from "./data/portfolio";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
+const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
 });
 
-const newsreader = Newsreader({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  display: "swap",
-});
+const description =
+  "Full-stack developer in Bengaluru, building Kurambit, a game studio that plays what it builds, and Circe, a voice-first control plane for coding agents.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abstergo.fyi/"),
-  title: "Parv Jain",
-  description:
-    "Selected product systems, frontend interfaces, and developer tools by Parv Jain—a full-stack developer in Bengaluru building as Abstergo.",
-  applicationName: "Parv Jain",
-  keywords: [
-    "Parv Jain",
-    "Abstergo",
-    "full-stack developer",
-    "frontend developer",
-    "product engineer",
-    "Next.js",
-    "TypeScript",
-    "Solana",
-  ],
-  authors: [{ name: "Parv Jain", url: "https://abstergo.fyi/" }],
-  creator: "Parv Jain",
-  publisher: "Parv Jain",
-  category: "technology",
+  metadataBase: new URL(site.url),
+  title: site.name,
+  description,
+  applicationName: site.name,
+  keywords: ["Parv Jain", "Abstergo", "Kurambit", "Circe", "full-stack developer", "TypeScript", "Next.js"],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
   alternates: { canonical: "/" },
-  manifest: "/manifest.webmanifest",
   formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
-    title: "Parv Jain",
-    description:
-      "Selected product systems and interface work by Parv Jain.",
+    title: site.name,
+    description,
     url: "/",
-    siteName: "Parv Jain",
+    siteName: site.name,
     locale: "en_IN",
     type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Parv Jain",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parv Jain",
-    description: "Selected product systems and interface work by Parv Jain.",
+    title: site.name,
+    description,
     creator: "@notabbytwt",
-    images: [
-      {
-        url: "/opengraph-image",
-        alt: "Parv Jain",
-      },
-    ],
   },
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#171513",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f5f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-IN" className={`${manrope.variable} ${ibmPlexMono.variable} ${newsreader.variable}`}>
+    <html lang="en-IN" className={mono.variable}>
       <body>{children}</body>
     </html>
   );

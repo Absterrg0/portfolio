@@ -1,12 +1,6 @@
 import type { MetadataRoute } from "next";
+import { site } from "./data/portfolio";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: "https://abstergo.fyi/",
-      lastModified: new Date("2026-08-09"),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  return [{ url: `${site.url}/`, lastModified: new Date("2026-11-08"), changeFrequency: "monthly", priority: 1 }];
 }

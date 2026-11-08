@@ -1,43 +1,43 @@
-import { portfolioContent as content } from "../data/portfolio";
+import { contact, now, site, work } from "../data/portfolio";
 
 export function PortfolioJsonLd() {
-  const projectEntries = [...content.systems, ...content.interfaces].map((project, position) => ({
-    "@type": "ListItem",
-    position: position + 1,
-    item: {
-      "@type": "CreativeWork",
-      name: project.title,
-      description: project.description,
-      url: "href" in project ? project.href : project.links[0].href,
-      creator: { "@id": "https://abstergo.fyi/#person" },
-    },
-  }));
+  const person = `${site.url}/#person`;
+  const projects = [now.kurambit, now.circe, ...work.filter((item) => item.name !== "interfaces")];
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://abstergo.fyi/#person",
-        name: content.identity.name,
-        url: "https://abstergo.fyi/",
-        jobTitle: content.identity.role,
+        "@id": person,
+        name: site.name,
+        url: `${site.url}/`,
+        jobTitle: site.role,
+        email: `mailto:${contact.email}`,
         address: { "@type": "PostalAddress", addressCountry: "IN", addressLocality: "Bengaluru" },
-        sameAs: content.contact.social.map((link) => link.href),
+        sameAs: contact.links.filter((link) => link.href.startsWith("http")).map((link) => link.href),
       },
       {
         "@type": "WebSite",
-        "@id": "https://abstergo.fyi/#website",
-        name: `${content.identity.name} / ${content.identity.studio}`,
-        url: "https://abstergo.fyi/",
-        description: "Selected product systems and interface work by Parv Jain.",
-        author: { "@id": "https://abstergo.fyi/#person" },
+        "@id": `${site.url}/#website`,
+        name: site.name,
+        url: `${site.url}/`,
+        description: site.description,
+        author: { "@id": person },
       },
       {
         "@type": "ItemList",
-        "@id": "https://abstergo.fyi/#selected-work",
-        name: "Selected systems and interface work",
-        numberOfItems: projectEntries.length,
-        itemListElement: projectEntries,
+        name: "Selected work",
+        itemListElement: projects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "CreativeWork",
+            name: project.name,
+            description: "tagline" in project ? project.tagline : project.line,
+            url: project.links[0].href,
+            creator: { "@id": person },
+          },
+        })),
       },
     ],
   };

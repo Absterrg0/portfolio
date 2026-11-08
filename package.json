@@ -1,15 +1,13 @@
 {
-  "name": "portfolio-dual",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "brand:generate": "node scripts/generate-brand-assets.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "verify:modes": "node scripts/verify-mode-content.mjs"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.3.0",

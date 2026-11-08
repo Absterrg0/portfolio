@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/play", destination: "/", permanent: true },
       { source: "/minimal", destination: "/", permanent: true },
+      { source: "/atlas", destination: "/", permanent: true },
     ];
   },
   async headers() {

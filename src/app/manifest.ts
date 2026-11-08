@@ -1,24 +1,15 @@
 import type { MetadataRoute } from "next";
+import { site } from "./data/portfolio";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Parv Jain",
-    short_name: "Parv Jain",
-    description: "Selected product systems and interface work by Parv Jain.",
+    name: site.name,
+    short_name: site.name,
+    description: site.description,
     start_url: "/",
-    scope: "/",
     display: "standalone",
-    background_color: "#171513",
-    theme_color: "#171513",
-    icons: [
-      { src: "/icons/parv-jain-192.png", sizes: "192x192", type: "image/png" },
-      { src: "/icons/parv-jain-512.png", sizes: "512x512", type: "image/png" },
-      {
-        src: "/icons/parv-jain-maskable-512.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
-      },
-    ],
+    background_color: "#0f0f0e",
+    theme_color: "#0f0f0e",
+    icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

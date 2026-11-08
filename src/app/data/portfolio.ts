@@ -1,180 +1,108 @@
-export type WorkLink = Readonly<{ label: string; href: string }>;
+export type Link = Readonly<{ label: string; href: string }>;
 
-export type SystemProject = Readonly<{
-  id: "okito" | "droplert" | "decentrawork" | "justdraw" | "circe";
-  index: string;
-  title: string;
-  category: string;
-  description: string;
-  stack: readonly string[];
-  image: string;
-  imageAlt: string;
-  imageWidth: number;
-  imageHeight: number;
-  links: readonly WorkLink[];
-}>;
+export const site = {
+  url: "https://abstergo.fyi",
+  name: "Parv Jain",
+  role: "Full-stack developer",
+  location: "Bengaluru, India",
+  timeZone: "Asia/Kolkata",
+  description:
+    "Parv Jain is a full-stack developer in Bengaluru building Kurambit, a game studio that plays what it builds, and Circe, a voice-first control plane for coding agents.",
+} as const;
 
-export type InterfaceProject = Readonly<{
-  id: "archive-07" | "neoai" | "clandestine" | "email" | "pricing" | "order" | "portfolio" | "grok" | "profile";
-  index: string;
-  title: string;
-  description: string;
-  href: string;
-  image: string;
-  imageAlt: string;
-  imageWidth: number;
-  imageHeight: number;
-  span: "feature" | "wide" | "standard" | "compact";
-  signal?: "green" | "mineral" | "oxide";
-}>;
-
-const systems = [
-  {
-    id: "okito", index: "SYS.01", title: "Okito", category: "Payment infrastructure / Solana",
-    description: "A Web3 payment gateway on Solana, designed around a direct developer and user experience.",
-    stack: ["Next.js", "TypeScript", "Solana", "Web3", "React", "Tailwind"],
-    image: "/images/projects/okito.webp", imageAlt: "Okito payment product interface", imageWidth: 2400, imageHeight: 1500,
-    links: [{ label: "Live product", href: "https://app.okito.abstergo.fyi/" }, { label: "Source", href: "https://github.com/Absterrg0/Okito-app" }],
-  },
-  {
-    id: "droplert", index: "SYS.02", title: "Droplert", category: "Real-time systems / npm",
-    description: "A real-time website notification system integrated through a lightweight npm package.",
-    stack: ["TypeScript", "npm", "JavaScript", "React", "Node.js"],
-    image: "/images/projects/droplert.webp", imageAlt: "Droplert notification system dashboard", imageWidth: 2400, imageHeight: 1500,
-    links: [{ label: "Live product", href: "https://droplert.abstergo.fyi/" }, { label: "Source", href: "https://github.com/Absterrg0/Alertify" }],
-  },
-  {
-    id: "decentrawork", index: "SYS.03", title: "DecentraWork", category: "Marketplace / Web3",
-    description: "A Solana-powered freelance marketplace with transparent transactions and smart-contract payments.",
-    stack: ["Solana", "Web3", "Smart contracts", "React", "TypeScript"],
-    image: "/images/projects/decentrawork.webp", imageAlt: "DecentraWork freelance marketplace interface", imageWidth: 2400, imageHeight: 1500,
-    links: [{ label: "Live product", href: "https://decentrawork.abstergo.fyi/" }, { label: "Source", href: "https://github.com/Absterrg0/DecentraWork" }],
-  },
-  {
-    id: "justdraw", index: "SYS.04", title: "JustDraw", category: "Creative tools / Canvas",
-    description: "A responsive single-user drawing app with configurable tools, shapes, and a focused workspace.",
-    stack: ["React", "Canvas API", "TypeScript", "Tailwind", "JavaScript"],
-    image: "/images/projects/justdraw.webp", imageAlt: "JustDraw creative drawing workspace", imageWidth: 2400, imageHeight: 1500,
-    links: [{ label: "Live product", href: "https://justdraw.abstergo.fyi/" }, { label: "Source", href: "https://github.com/Absterrg0/JustDraw" }],
-  },
-  {
-    id: "circe", index: "SYS.05", title: "Circe", category: "Coding-agent control plane / Voice",
-    description: "A voice-first control plane that routes a spoken request to the machine and coding agent that own the work, grounded in real projects instead of guesses.",
-    stack: ["TypeScript", "T3 Code", "React", "Electron", "Node.js"],
-    image: "/images/projects/circe.webp", imageAlt: "Circe voice control plane landing interface", imageWidth: 2400, imageHeight: 1500,
-    links: [{ label: "Live site", href: "https://heycirce.com" }, { label: "Source", href: "https://github.com/Absterrg0/circe" }],
-  },
-] as const satisfies readonly SystemProject[];
-
-const interfaces = [
-  { id: "archive-07", index: "INT.01 / NEW", title: "Archive 07 — Biographical Registry", description: "A field registry of known beings, origins, and appearances across the galactic record.", href: "https://starwars.abstergo.fyi/", image: "/images/interfaces/archive-07.webp", imageAlt: "Archive 07 character registry interface with technical field records", imageWidth: 2400, imageHeight: 1500, span: "feature", signal: "green" },
-  { id: "neoai", index: "INT.02", title: "NeoAI", description: "Smart AI for shopping, delivery, and travel planning.", href: "https://neoai.abstergo.fyi/", image: "/images/interfaces/neoai-interface.webp", imageAlt: "NeoAI shopping and travel assistant interface", imageWidth: 2400, imageHeight: 1500, span: "wide", signal: "mineral" },
-  { id: "clandestine", index: "INT.03", title: "Clandestine", description: "AI-powered cybersecurity with real-time threat detection.", href: "https://clandestine.abstergo.fyi/", image: "/images/interfaces/clandestine-interface.webp", imageAlt: "Clandestine cybersecurity platform interface", imageWidth: 2400, imageHeight: 1500, span: "standard", signal: "oxide" },
-  { id: "email", index: "INT.04", title: "Email Management", description: "AI email dashboard with smart filtering and CRM context.", href: "https://components.abstergo.fyi/five", image: "/images/interfaces/email.webp", imageAlt: "Email management dashboard component", imageWidth: 2400, imageHeight: 1500, span: "standard" },
-  { id: "pricing", index: "INT.05", title: "Pricing Plans", description: "A clear tiered subscription and pricing component.", href: "https://components.abstergo.fyi/one", image: "/images/interfaces/pricingplan.webp", imageAlt: "Pricing plans interface component", imageWidth: 2400, imageHeight: 1500, span: "compact" },
-  { id: "order", index: "INT.06", title: "Order Customizer", description: "Shopify customer self-service order editing.", href: "https://components.abstergo.fyi/two", image: "/images/interfaces/order.webp", imageAlt: "Shopify order customization component", imageWidth: 2400, imageHeight: 1500, span: "compact" },
-  { id: "portfolio", index: "INT.07", title: "Portfolio Component", description: "A concise profile and work showcase.", href: "https://components.abstergo.fyi/third", image: "/images/interfaces/portfolio.webp", imageAlt: "Minimal portfolio profile component", imageWidth: 2400, imageHeight: 1500, span: "compact" },
-  { id: "grok", index: "INT.08", title: "Grok Dashboard", description: "A dense but legible AI dashboard interface.", href: "https://components.abstergo.fyi/four", image: "/images/interfaces/grok.webp", imageAlt: "Grok AI dashboard interface", imageWidth: 2400, imageHeight: 1500, span: "wide", signal: "mineral" },
-  { id: "profile", index: "INT.09", title: "User Avatar", description: "An elegant user avatar and profile display.", href: "https://components.abstergo.fyi/six", image: "/images/interfaces/profile.webp", imageAlt: "User avatar and profile component", imageWidth: 2400, imageHeight: 1500, span: "standard" },
-] as const satisfies readonly InterfaceProject[];
-
-const capabilities = [
-  { index: "CAP.01", title: "Product interface", items: "React · Next.js · TypeScript · Tailwind · TanStack Query · Motion · Figma" },
-  { index: "CAP.02", title: "Application systems", items: "Node / Express · PostgreSQL · Redis · Prisma · APIs" },
-  { index: "CAP.03", title: "Delivery & tooling", items: "Git · Docker · Linux · AWS" },
-  { index: "CAP.04", title: "Protocol depth", items: "Solana · Web3 · SDKs · Real-time systems" },
+export const intro = [
+  "I build systems and the interfaces that sit on top of them, and I care about both halves equally.",
+  "Lately that means tools that let coding agents do real work: make games, take orders by voice, and know when they got it wrong.",
 ] as const;
 
-export const portfolioContent = {
-  identity: {
-    name: "Parv Jain",
-    studio: "Abstergo",
-    descriptor: "Product systems",
-    role: "Full-stack Developer",
-    discipline: "Product + interface",
-    location: "Bengaluru, India",
-    availability: "Available for work",
-    availabilityLong: "Available for internships, full-time and freelance",
-    focus: "Last shipped — Okito",
-    timeZone: "Asia/Kolkata",
-  },
-  navigation: [
-    { href: "#systems", label: "Systems", index: "01" },
-    { href: "#interfaces", label: "Interfaces", index: "02" },
-    { href: "#practice", label: "Practice", index: "03" },
-    { href: "#about", label: "About", index: "04" },
-    { href: "#contact", label: "Contact", index: "05" },
-  ],
-  modes: {
-    label: "Portfolio view / 2 styles",
-    statement: "Two authored interfaces. One identical body of work.",
-    callout: "2 interfaces / 1 body of work",
-    options: [
-      { id: "minimal", label: "Minimal", href: "/" },
-      { id: "atlas", label: "Atlas", href: "/atlas" },
+export const now = {
+  kurambit: {
+    name: "kurambit",
+    tagline: "A game studio that plays what it builds.",
+    description:
+      "Describe a game. The coding agent you already use builds it in Godot and Blender, a separate tester session plays every build, and a blind comparison decides whether a change stays. Open source and local first.",
+    links: [
+      { label: "kurambit.com", href: "https://kurambit.com" },
+      { label: "source", href: "https://github.com/Absterrg0/Kurambit" },
+    ],
+    games: [
+      { name: "hollow-reach", engine: "godot", line: "climb a ruined cliffside monastery and ring three bells" },
+      { name: "tidewake", engine: "godot", line: "a lighthouse keeper's roguelite on a flooded island" },
+      { name: "lantern-hop", engine: "three", line: "a paper lantern hopping lily pads on a night pond" },
+      { name: "fox-dash", engine: "three", line: "one fox, five gems, three slimes" },
     ],
   },
-
-  hero: {
-    eyebrow: "Full-stack Developer / Systems + interface",
-    titleLead: "I design the interface",
-    titleMiddle: "and build the system",
-    titleTail: "behind it.",
-    biography: "I’m Parv Jain, a full-stack developer focused on scalable systems, real-time applications, and developer-first tools—built with clean architecture, strong performance, and end-to-end product ownership.",
-    actions: [
-      { label: "View selected systems", href: "#systems" },
-      { label: "Explore interface work", href: "#interfaces" },
+  circe: {
+    name: "circe",
+    tagline: "A voice-first control plane for coding agents.",
+    description:
+      "Say what you want and it lands on the machine, project and agent that own the work, grounded in what is actually running instead of guesses. Built on T3 Code.",
+    links: [
+      { label: "heycirce.com", href: "https://heycirce.com" },
+      { label: "source", href: "https://github.com/Absterrg0/circe" },
     ],
-  },
-  sections: {
-    systems: { index: "02 / 05", eyebrow: "Selected systems", title: "Products that work all the way through.", description: "Selected full-stack systems where product thinking, interface craft, and underlying architecture operate as one." },
-    interfaces: { index: "03 / 05", eyebrow: "Interface archive / Frontend work", title: "Interfaces are not the surface. They are the system made visible.", description: "Nine experiments and production concepts across commerce, AI, cybersecurity, identity, and information architecture.", register: "Register / 09 entries", range: "2024—2026", discipline: "Discipline / UI engineering" },
-    practice: { index: "04 / 05", eyebrow: "Package / Capability", title: "A wide practice, kept coherent.", description: "I move across the stack without separating interface quality from system quality." },
-    about: { eyebrow: "05 / 05 — About / Experience", title: "Curiosity, made operational." },
-  },
-  systems,
-  interfaces,
-  practice: {
-    record: "Package record / SDK.01",
-    status: "Active",
-    eyebrow: "TypeScript / Solana / Web3 / npm / SDK",
-    title: "Okito SDK",
-    description: "A developer-friendly TypeScript wrapper that makes common Solana functions direct, typed, and easier to integrate.",
-    links: [{ label: "Site & docs", href: "https://okito.abstergo.fyi/" }, { label: "Source", href: "https://github.com/Absterrg0/Okito-app" }],
-  },
-  capabilities,
-  about: {
-    biography: "I’m Parv Jain, a full-stack developer who takes products from interface decisions through backend architecture and deployment. My work centers on scalable systems, real-time applications, developer-first tools, clean architecture, and performance.",
-    portrait: "/images/profile/parv-jain.webp",
-    portraitAlt: "Portrait of Parv Jain",
-    profileRecord: "Identity / PJ.01",
-    profileLine: "Full-stack Developer · Bengaluru, India",
-  },
-  timeline: [
-    { id: "tb10", index: "EXP.01", date: "JAN 2026—JUN 2026", title: "TB10 Platform", role: "Full-stack Developer / Game Infrastructure / Remote", description: "Owned the architecture and development of a full-stack tournament platform: a React and Tailwind frontend, Node.js game logic and APIs, scalable workflows, and real-time state synchronization for multiplayer-style experiences." },
-    { id: "octasol", index: "EXP.02", date: "JUL 2025—AUG 2025", title: "Octasol", role: "Freelancer / Escrow Workflow / Remote", description: "Built a GitHub escrow workflow and Solana smart contracts for secure payments, contributing to on-chain execution, testing, and workflow automation." },
-    { id: "blolabel", index: "EXP.03", date: "NOV 2024—JUN 2025", title: "Blolabel", role: "Full-stack Developer / Remote", description: "Built a document annotation platform with structured labeling, editing, layered metadata, and real-time feedback; designed document storage and annotation workflows; implemented HLS video processing with AWS S3 and MediaConvert; and integrated Cleanvoice AI audio filtering." },
-    { id: "education", index: "EDU.01", date: "2023—2027", title: "M.S. Ramaiah Institute of Technology", role: "B.Tech / Computer Science Engineering / Bengaluru", description: "Bachelor of Technology in Computer Science Engineering." },
-  ],
-  contact: {
-    coordinate: "Channel / Open",
-    zone: "India / UTC +05:30",
-    eyebrow: "Available for internships, full-time & freelance",
-    titleLead: "Let’s make something",
-    titleTail: "clear, useful, and real.",
-    email: "parvj5212@gmail.com",
-    social: [
-      { label: "GitHub", href: "https://github.com/absterrg0/" },
-      { label: "X / Twitter", href: "https://x.com/intent/follow?screen_name=notabbytwt" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/parv-jain-82169b297" },
-    ],
-    resume: { label: "Résumé", href: "/resume.pdf" },
-  },
-  footer: {
-    identity: "Parv Jain / Abstergo",
-    builtWith: "Built with Next.js + TypeScript",
-    origin: "Back to origin",
   },
 } as const;
 
-export type PortfolioContent = typeof portfolioContent;
+export const work = [
+  {
+    name: "okito",
+    line: "Solana payment gateway and its TypeScript SDK",
+    links: [
+      { label: "live", href: "https://app.okito.abstergo.fyi/" },
+      { label: "sdk", href: "https://okito.abstergo.fyi/" },
+      { label: "src", href: "https://github.com/Absterrg0/Okito-app" },
+    ],
+  },
+  {
+    name: "droplert",
+    line: "real-time in-app alerts from one npm package",
+    links: [
+      { label: "live", href: "https://droplert.abstergo.fyi/" },
+      { label: "src", href: "https://github.com/Absterrg0/Alertify" },
+    ],
+  },
+  {
+    name: "decentrawork",
+    line: "freelance marketplace paid by smart contracts",
+    links: [
+      { label: "live", href: "https://decentrawork.abstergo.fyi/" },
+      { label: "src", href: "https://github.com/Absterrg0/DecentraWork" },
+    ],
+  },
+  {
+    name: "justdraw",
+    line: "a local-first sketchbook for diagrams",
+    links: [
+      { label: "live", href: "https://justdraw.abstergo.fyi/" },
+      { label: "src", href: "https://github.com/Absterrg0/JustDraw" },
+    ],
+  },
+  {
+    name: "interfaces",
+    line: "frontend experiments",
+    links: [
+      { label: "archive-07", href: "https://starwars.abstergo.fyi/" },
+      { label: "neoai", href: "https://neoai.abstergo.fyi/" },
+      { label: "clandestine", href: "https://clandestine.abstergo.fyi/" },
+      { label: "components", href: "https://components.abstergo.fyi/one" },
+    ],
+  },
+] as const;
+
+export const experience = [
+  { when: "2026.01 - 2026.06", where: "TB10 Platform", what: "Full-stack developer. Owned a real-time tournament platform end to end." },
+  { when: "2025.07 - 2025.08", where: "Octasol", what: "Solana escrow contracts and a GitHub payout workflow." },
+  { when: "2024.11 - 2025.06", where: "Blolabel", what: "Full-stack developer. Document annotation, HLS video on AWS." },
+  { when: "2023 - 2027", where: "MSRIT", what: "B.Tech, Computer Science. M.S. Ramaiah Institute of Technology." },
+] as const;
+
+export const contact = {
+  email: "parvj5212@gmail.com",
+  links: [
+    { label: "github", href: "https://github.com/absterrg0" },
+    { label: "x", href: "https://x.com/notabbytwt" },
+    { label: "linkedin", href: "https://www.linkedin.com/in/parv-jain-82169b297" },
+    { label: "resume", href: "/resume.pdf" },
+  ],
+} as const satisfies { email: string; links: readonly Link[] };
