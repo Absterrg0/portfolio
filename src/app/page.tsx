@@ -102,7 +102,7 @@ export default function Home() {
             </ul>
           </Project>
           <Project project={circe}>
-            <pre className="art circe" aria-label="A spoken request sorted into a question, an operation or work. This one is an operation.">
+            <pre className="art circe" role="img" aria-label="A spoken request sorted into a question, an operation or work. This one is an operation.">
               {circeFigure.map((runs, i) => (
                 <span key={i} className="circe-line">
                   {runs.map(([text, inked], j) => (

@@ -1,7 +1,7 @@
 // Every piece of art here is plain 7-bit ASCII so it lines up in any monospace font.
 
 // Kurambit's fox, sitting with its tail curled round its front paws.
-// Drawn as an outline; the dots near the tail's end are its white tip.
+// Drawn as an outline; the colon near the tail's end marks off its white tip.
 // The "o" on the third row is its eye; see `foxEye`.
 export const fox = [
   "             /\\  /|",
@@ -9,7 +9,7 @@ export const fox = [
   "      _.--'  o    \\",
   "  <--'             \\",
   "   `-._            |",
-  "       `-.        (",
+  "       `-.         |",
   "         /         \\",
   "        /           \\",
   "       (             \\",
@@ -17,9 +17,9 @@ export const fox = [
   "        \\     .--.     \\",
   "         | | /          |",
   "  .-.    | |(          /",
-  " (. .`-'-'--`-.__     /",
-  "  `. . .          `-._/",
-  "    `-.._______..---''",
+  " (  :`-'-'--`-.__     /",
+  "  `-:             `-._/",
+  "    `-.____________.-'",
 ] as const;
 
 // Where the eye sits in `fox`: row and column of the single character.
@@ -34,5 +34,5 @@ export const circeFigure: readonly (readonly Run[])[] = [
   [["   |", true]],
   [["   +", true], ["-- question    answer from live state", false]],
   [["   +-- operation   approve, stop or steer", true]],
-  [["   `-- work        send to the thread that owns it", false]],
+  [["   `-- work        send to the right thread", false]],
 ];

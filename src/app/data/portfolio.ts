@@ -11,14 +11,14 @@ export const site = {
 } as const;
 
 export const intro =
-  "I'm a full-stack developer and a computer science student at MSRIT. Right now I'm building two open-source apps on T3 Code.";
+  "I'm a full-stack developer and a computer science student at MSRIT. Right now I'm building Kurambit and Circe, two open-source apps on T3 Code.";
 
 export const kurambit = {
   name: "Kurambit",
   summary: "A Linux app that makes games with the coding agent you already use.",
   meta: "linux app, mit license",
   body: [
-    "Kurambit makes games with the coding agent you already use. The agent builds them in Godot or three.js, and every Blender model keeps its .blend file and the script that made it.",
+    "You describe a game and the coding agent you already use builds it in Godot or three.js. Any model it makes in Blender keeps its .blend file and the script that made it.",
     "A second session plays every build and reports what it saw. If a build doesn't beat the last one in a blind comparison, Kurambit reverts it.",
   ],
   links: [
@@ -68,7 +68,7 @@ export const earlier = [
   },
   {
     name: "decentrawork",
-    line: "freelance work paid by solana contracts",
+    line: "freelance marketplace, solana payments",
     links: [
       { label: "site", href: "https://decentrawork.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/DecentraWork" },
@@ -76,7 +76,7 @@ export const earlier = [
   },
   {
     name: "justdraw",
-    line: "a sketchbook that saves in your browser",
+    line: "sketchbook that saves in your browser",
     links: [
       { label: "site", href: "https://justdraw.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/JustDraw" },

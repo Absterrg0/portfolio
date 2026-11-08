@@ -243,6 +243,10 @@ h3 {
   margin: 2px 0 12px;
 }
 
+.project p {
+  text-wrap: pretty;
+}
+
 .project p + p:not(.sub) {
   margin-top: 0.55em;
 }
