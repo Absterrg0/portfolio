@@ -85,7 +85,7 @@ export const earlier = [
 ] as const;
 
 export const experiments = {
-  label: "interface experiments",
+  label: "ui experiments",
   links: [
     { label: "archive 07", href: "https://starwars.abstergo.fyi/" },
     { label: "neoai", href: "https://neoai.abstergo.fyi/" },

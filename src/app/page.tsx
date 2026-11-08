@@ -25,7 +25,7 @@ function Links({ links }: { links: readonly Link[] }) {
   );
 }
 
-// A section with its name in the left margin.
+// A section with a small label over it.
 function Section({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
   return (
     <section className="section" aria-labelledby={id}>
@@ -90,22 +90,17 @@ export default function Home() {
         </header>
 
         <Section id="now" label="now">
-          <article className="project kurambit" aria-labelledby="kurambit">
-            <div className="project-text">
-              <ProjectHead project={kurambit} />
-              {kurambit.body.map((sentence) => (
-                <p key={sentence}>{sentence}</p>
+          <article className="project" aria-labelledby="kurambit">
+            <ProjectHead project={kurambit} />
+            {kurambit.body.map((sentence) => (
+              <p key={sentence}>{sentence}</p>
+            ))}
+            <p className="sub">{kurambit.gamesLabel}</p>
+            <ul className="index">
+              {kurambit.games.map((game) => (
+                <Row key={game.name} name={game.name} note={game.line} end={game.engine} />
               ))}
-            </div>
-            <AsciiArt className="crystal" name="gem" {...art.crystal} />
-            <div className="project-list">
-              <p className="sub">{kurambit.gamesLabel}</p>
-              <ul className="index">
-                {kurambit.games.map((game) => (
-                  <Row key={game.name} name={game.name} note={game.line} end={game.engine} />
-                ))}
-              </ul>
-            </div>
+            </ul>
           </article>
 
           <article className="project" aria-labelledby="circe">
@@ -113,7 +108,6 @@ export default function Home() {
             {circe.body.map((sentence) => (
               <p key={sentence}>{sentence}</p>
             ))}
-            <AsciiArt className="wave" name="waveform" {...art.waveform} />
           </article>
         </Section>
 
@@ -156,9 +150,6 @@ export default function Home() {
           </dl>
         </Section>
 
-        <footer className="colophon">
-          <p>the ascii art is generated in code and drawn live in your browser</p>
-        </footer>
       </main>
     </>
   );

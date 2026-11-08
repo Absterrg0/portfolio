@@ -5,8 +5,7 @@
   --dim: #6b6963; /* 5.0:1 on --bg */
   --rule: #b4b1a9; /* decoration only: underlines */
   --hair: #e2dfd8; /* decoration only: section lines */
-  --page: 55rem;
-  --gutter: 8.5rem;
+  --column: 44rem;
   --serif: var(--font-serif), Georgia, "Times New Roman", serif;
   --mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --mono-size: 12.5px;
@@ -92,11 +91,13 @@ ul {
   list-style: none;
 }
 
+/* one column, one left edge */
+
 .page {
-  width: calc(var(--page) + 64px);
+  width: calc(var(--column) + 64px);
   max-width: 100%;
   margin: 0 auto;
-  padding: 64px 32px 72px;
+  padding: 72px 32px 96px;
 }
 
 /* everything set in mono */
@@ -106,8 +107,7 @@ ul {
 .links,
 .project-meta,
 .sub,
-.index,
-.colophon {
+.index {
   font-family: var(--mono);
   font-size: var(--mono-size);
   line-height: 1.7;
@@ -118,8 +118,7 @@ ul {
 .label,
 .project-meta,
 .sub,
-.dim,
-.colophon {
+.dim {
   color: var(--dim);
 }
 
@@ -129,30 +128,21 @@ ul {
   gap: 0 1.5ch;
 }
 
-/* ascii pieces */
+/* the scene: it fills the column, so the font size is the width over the number of columns */
 
 .ascii {
   color: var(--art);
   user-select: none;
+  container-type: inline-size;
 }
 
 .ascii pre {
   font-family: var(--mono);
   font-feature-settings: "calt" 0, "liga" 0;
+  font-size: calc(100cqw / (var(--cols) * 0.6));
   line-height: 1;
   white-space: pre;
   overflow: hidden;
-}
-
-/* the scene and the waveform fill their width: the font size is the width over the columns */
-.scene,
-.wave {
-  container-type: inline-size;
-}
-
-.scene pre,
-.wave pre {
-  font-size: calc(100cqw / (var(--cols) * 0.6));
 }
 
 .ascii-narrow {
@@ -162,7 +152,7 @@ ul {
 /* hero */
 
 .scene {
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
 .hero-line {
@@ -180,30 +170,27 @@ h1 {
 }
 
 .intro {
-  max-width: 31em;
+  max-width: 32em;
   margin-top: 14px;
-  color: var(--fg);
   text-wrap: pretty;
 }
 
-/* sections: the name sits in the left margin */
+/* sections: a small label on a hairline, then the content */
 
 .section {
-  display: grid;
-  grid-template-columns: var(--gutter) minmax(0, 1fr);
-  margin-top: 72px;
-  padding-top: 20px;
-  border-top: 1px solid var(--hair);
+  margin-top: 80px;
 }
 
 .label {
-  padding-top: 0.35em;
+  padding-top: 12px;
+  margin-bottom: 28px;
+  border-top: 1px solid var(--hair);
 }
 
 /* projects */
 
 .project + .project {
-  margin-top: 64px;
+  margin-top: 56px;
 }
 
 .project-head {
@@ -226,7 +213,7 @@ h3 {
 }
 
 .project p:not([class]) {
-  max-width: 31em;
+  max-width: 34em;
   text-wrap: pretty;
 }
 
@@ -234,38 +221,8 @@ h3 {
   margin-top: 0.6em;
 }
 
-.kurambit {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    "text crystal"
-    "list list";
-  column-gap: 32px;
-}
-
-.project-text {
-  grid-area: text;
-}
-
-.crystal {
-  grid-area: crystal;
-  align-self: center;
-}
-
-.crystal pre {
-  font-size: 9px;
-}
-
-.project-list {
-  grid-area: list;
-}
-
 .sub {
-  margin: 28px 0 6px;
-}
-
-.wave {
-  margin-top: 28px;
+  margin: 26px 0 6px;
 }
 
 /* index lines: name, note, and whatever sits on the right */
@@ -290,10 +247,10 @@ h3 {
 }
 
 .experiments {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 2ch;
-  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 15ch minmax(0, 1fr);
+  column-gap: 2ch;
+  margin-top: 20px;
 }
 
 /* contact: label in grey, link in ink */
@@ -316,24 +273,6 @@ h3 {
   margin: 0;
 }
 
-.colophon {
-  margin-top: 96px;
-  padding-left: var(--gutter);
-}
-
-/* tablets: the section names move above their sections */
-
-@media (max-width: 760px) {
-  .section {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 18px;
-  }
-
-  .colophon {
-    padding-left: 0;
-  }
-}
-
 /* phones */
 
 @media (max-width: 600px) {
@@ -346,7 +285,7 @@ h3 {
   }
 
   .page {
-    padding: 28px 20px 56px;
+    padding: 28px 20px 64px;
   }
 
   .ascii-wide {
@@ -370,15 +309,11 @@ h3 {
   }
 
   .section {
-    margin-top: 56px;
+    margin-top: 60px;
   }
 
-  .kurambit {
-    display: block;
-  }
-
-  .crystal {
-    display: none;
+  .label {
+    margin-bottom: 22px;
   }
 
   /* the links get their own line instead of wrapping into the meta */
@@ -401,6 +336,10 @@ h3 {
 
   .row + .row {
     margin-top: 10px;
+  }
+
+  .experiments {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .contact div {
