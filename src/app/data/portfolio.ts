@@ -7,82 +7,96 @@ export const site = {
   location: "Bengaluru, India",
   timeZone: "Asia/Kolkata",
   description:
-    "Parv Jain is a full-stack developer in Bengaluru building Kurambit, a game studio that plays what it builds, and Circe, a voice-first control plane for coding agents.",
+    "Parv Jain is a full-stack developer in Bengaluru. He is building Kurambit, a Linux app that makes games with your coding agent, and Circe, which runs coding agents by voice.",
 } as const;
 
 export const intro = [
-  "I build systems and the interfaces that sit on top of them, and I care about both halves equally.",
-  "Lately that means tools that let coding agents do real work: make games, take orders by voice, and know when they got it wrong.",
+  "I'm a full-stack developer in Bengaluru, studying computer science at MSRIT.",
+  "Right now I'm building Kurambit and Circe. Both are open source and built on T3 Code.",
 ] as const;
 
-export const now = {
-  kurambit: {
-    name: "kurambit",
-    tagline: "A game studio that plays what it builds.",
-    description:
-      "Describe a game. The coding agent you already use builds it in Godot and Blender, a separate tester session plays every build, and a blind comparison decides whether a change stays. Open source and local first.",
-    links: [
-      { label: "kurambit.com", href: "https://kurambit.com" },
-      { label: "source", href: "https://github.com/Absterrg0/Kurambit" },
-    ],
-    games: [
-      { name: "hollow-reach", engine: "godot", line: "climb a ruined cliffside monastery and ring three bells" },
-      { name: "tidewake", engine: "godot", line: "a lighthouse keeper's roguelite on a flooded island" },
-      { name: "lantern-hop", engine: "three", line: "a paper lantern hopping lily pads on a night pond" },
-      { name: "fox-dash", engine: "three", line: "one fox, five gems, three slimes" },
-    ],
-  },
-  circe: {
-    name: "circe",
-    tagline: "A voice-first control plane for coding agents.",
-    description:
-      "Say what you want and it lands on the machine, project and agent that own the work, grounded in what is actually running instead of guesses. Built on T3 Code.",
-    links: [
-      { label: "heycirce.com", href: "https://heycirce.com" },
-      { label: "source", href: "https://github.com/Absterrg0/circe" },
-    ],
-  },
+export const kurambit = {
+  name: "Kurambit",
+  summary: "A Linux app that makes games with the coding agent you already use.",
+  body: "A Linux app that makes games with the coding agent you already use. A second session plays every build, and a build that doesn't beat the last one in a blind comparison is reverted.",
+  links: [
+    { label: "kurambit.com", href: "https://kurambit.com" },
+    { label: "source", href: "https://github.com/Absterrg0/Kurambit" },
+  ],
+  games: [
+    {
+      name: "hollow reach",
+      engine: "godot",
+      line: "Climb a ruined monastery to ring three bells. If a warden catches you, you go back to the last shrine.",
+    },
+    {
+      name: "tidewake",
+      engine: "godot",
+      line: "A lighthouse keeper works down through flooded floors to a boss.",
+    },
+    {
+      name: "lantern hop",
+      engine: "three.js",
+      line: "A paper lantern hops lily pads for fireflies before its candle burns out.",
+    },
+    {
+      name: "fox dash",
+      engine: "three.js",
+      line: "A fox picks up five gems while three slimes chase it.",
+    },
+  ],
 } as const;
 
-export const work = [
+export const circe = {
+  name: "Circe",
+  summary: "Runs coding agents by voice. There is no LLM inside it.",
+  body: "Circe lets you run coding agents by voice. There's no LLM inside it. It asks small, grounded questions about what is running and works out the action in code.",
+  note: "unfinished, built in the open",
+  links: [
+    { label: "heycirce.com", href: "https://heycirce.com" },
+    { label: "source", href: "https://github.com/Absterrg0/circe" },
+  ],
+} as const;
+
+export const earlier = [
   {
     name: "okito",
-    line: "Solana payment gateway and its TypeScript SDK",
+    line: "A Solana payment gateway, plus an SDK that wraps common Solana calls in TypeScript.",
     links: [
-      { label: "live", href: "https://app.okito.abstergo.fyi/" },
+      { label: "app", href: "https://app.okito.abstergo.fyi/" },
       { label: "sdk", href: "https://okito.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/Okito-app" },
     ],
   },
   {
     name: "droplert",
-    line: "real-time in-app alerts from one npm package",
+    line: "Real-time notifications for any website, added with a small npm package.",
     links: [
-      { label: "live", href: "https://droplert.abstergo.fyi/" },
+      { label: "site", href: "https://droplert.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/Alertify" },
     ],
   },
   {
     name: "decentrawork",
-    line: "freelance marketplace paid by smart contracts",
+    line: "A freelance marketplace on Solana where smart contracts handle the payments.",
     links: [
-      { label: "live", href: "https://decentrawork.abstergo.fyi/" },
+      { label: "site", href: "https://decentrawork.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/DecentraWork" },
     ],
   },
   {
     name: "justdraw",
-    line: "a local-first sketchbook for diagrams",
+    line: "A drawing app that keeps your sketches in the browser.",
     links: [
-      { label: "live", href: "https://justdraw.abstergo.fyi/" },
+      { label: "site", href: "https://justdraw.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/JustDraw" },
     ],
   },
   {
     name: "interfaces",
-    line: "frontend experiments",
+    line: "Front-end experiments.",
     links: [
-      { label: "archive-07", href: "https://starwars.abstergo.fyi/" },
+      { label: "archive 07", href: "https://starwars.abstergo.fyi/" },
       { label: "neoai", href: "https://neoai.abstergo.fyi/" },
       { label: "clandestine", href: "https://clandestine.abstergo.fyi/" },
       { label: "components", href: "https://components.abstergo.fyi/one" },
@@ -91,10 +105,26 @@ export const work = [
 ] as const;
 
 export const experience = [
-  { when: "2026.01 - 2026.06", where: "TB10 Platform", what: "Full-stack developer. Owned a real-time tournament platform end to end." },
-  { when: "2025.07 - 2025.08", where: "Octasol", what: "Solana escrow contracts and a GitHub payout workflow." },
-  { when: "2024.11 - 2025.06", where: "Blolabel", what: "Full-stack developer. Document annotation, HLS video on AWS." },
-  { when: "2023 - 2027", where: "MSRIT", what: "B.Tech, Computer Science. M.S. Ramaiah Institute of Technology." },
+  {
+    when: "jan - jun 2026",
+    where: "TB10 Platform",
+    what: "Owned the architecture of their tournament platform. Wrote the Node game logic and the real-time sync between players.",
+  },
+  {
+    when: "jul - aug 2025",
+    where: "Octasol",
+    what: "Built a GitHub escrow workflow and the Solana contracts behind its payments.",
+  },
+  {
+    when: "nov 2024 - jun 2025",
+    where: "Blolabel",
+    what: "Worked on a document annotation platform and built its HLS video pipeline on S3 and MediaConvert.",
+  },
+  {
+    when: "2023 - 2027",
+    where: "MSRIT",
+    what: "B.Tech in Computer Science, M.S. Ramaiah Institute of Technology.",
+  },
 ] as const;
 
 export const contact = {

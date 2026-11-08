@@ -1,8 +1,14 @@
-import { contact, now, site, work } from "../data/portfolio";
+import { circe, contact, earlier, kurambit, site } from "../data/portfolio";
 
 export function PortfolioJsonLd() {
   const person = `${site.url}/#person`;
-  const projects = [now.kurambit, now.circe, ...work.filter((item) => item.name !== "interfaces")];
+  const projects = [
+    { name: kurambit.name, description: kurambit.summary, url: kurambit.links[0].href },
+    { name: circe.name, description: circe.summary, url: circe.links[0].href },
+    ...earlier
+      .filter((item) => item.name !== "interfaces")
+      .map((item) => ({ name: item.name, description: item.line, url: item.links[0].href })),
+  ];
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -33,8 +39,8 @@ export function PortfolioJsonLd() {
           item: {
             "@type": "CreativeWork",
             name: project.name,
-            description: "tagline" in project ? project.tagline : project.line,
-            url: project.links[0].href,
+            description: project.description,
+            url: project.url,
             creator: { "@id": person },
           },
         })),

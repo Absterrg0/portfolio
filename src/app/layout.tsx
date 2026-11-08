@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Newsreader } from "next/font/google";
 import { site } from "./data/portfolio";
 import "./globals.css";
 
@@ -10,8 +10,14 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const serif = Newsreader({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 const description =
-  "Full-stack developer in Bengaluru, building Kurambit, a game studio that plays what it builds, and Circe, a voice-first control plane for coding agents.";
+  "Full-stack developer in Bengaluru. Building Kurambit, a Linux app that makes games with your coding agent, and Circe, which runs coding agents by voice.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -48,7 +54,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-IN" className={mono.variable}>
+    <html lang="en-IN" className={`${mono.variable} ${serif.variable}`}>
       <body>{children}</body>
     </html>
   );
