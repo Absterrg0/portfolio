@@ -1,7 +1,7 @@
-import { Fox } from "./components/fox";
+import { AsciiArt } from "./components/ascii-art";
 import { LocalTime } from "./components/local-time";
 import { PortfolioJsonLd } from "./components/portfolio-json-ld";
-import { circeFigure } from "./data/ascii";
+import { art } from "./data/art";
 import { circe, contact, earlier, experience, experiments, intro, kurambit, site, type Link } from "./data/portfolio";
 
 function Out({ href, children }: { href: string; children: React.ReactNode }) {
@@ -25,12 +25,15 @@ function Links({ links }: { links: readonly Link[] }) {
   );
 }
 
-// A labelled ASCII rule: "-- earlier -----------".
-function Rule({ id, children }: { id: string; children: string }) {
+// A section with its name in the left margin.
+function Section({ id, label, children }: { id: string; label: string; children: React.ReactNode }) {
   return (
-    <h2 className="rule" id={id}>
-      <span>{children}</span>
-    </h2>
+    <section className="section" aria-labelledby={id}>
+      <h2 className="label" id={id}>
+        {label}
+      </h2>
+      <div className="section-body">{children}</div>
+    </section>
   );
 }
 
@@ -45,26 +48,18 @@ function Row({ name, note, end }: { name: React.ReactNode; note: React.ReactNode
   );
 }
 
-function Project({
-  project,
-  children,
-}: {
-  project: { name: string; meta: string; body: readonly string[]; links: readonly Link[] };
-  children?: React.ReactNode;
-}) {
-  const id = project.name.toLowerCase();
+function ProjectHead({ project }: { project: { name: string; meta: string; links: readonly Link[] } }) {
   return (
-    <article className="project" aria-labelledby={id}>
-      <div className="project-head">
-        <h3 id={id}>{project.name}</h3>
+    <header className="project-head">
+      <h3 id={project.name.toLowerCase()}>{project.name}</h3>
+      <p className="project-meta">
+        {project.meta}
+        <span className="sep" aria-hidden="true">
+          {"  /  "}
+        </span>
         <Links links={project.links} />
-      </div>
-      <p className="project-meta">{project.meta}</p>
-      {project.body.map((sentence) => (
-        <p key={sentence}>{sentence}</p>
-      ))}
-      {children}
-    </article>
+      </p>
+    </header>
   );
 }
 
@@ -82,65 +77,67 @@ export default function Home() {
     <>
       <PortfolioJsonLd />
       <main className="page">
+        <AsciiArt className="scene" name="landscape" {...art.landscape} />
+
         <header className="hero">
-          <Fox />
-          <h1>{site.name}</h1>
+          <div className="hero-line">
+            <h1>{site.name}</h1>
+            <p className="meta">
+              {site.location.split(",")[0].toLowerCase()} <LocalTime initialTime={initialIst()} />
+            </p>
+          </div>
           <p className="intro">{intro}</p>
-          <p className="meta">
-            {site.location.split(",")[0].toLowerCase()} <LocalTime initialTime={initialIst()} />
-          </p>
         </header>
 
-        <section aria-labelledby="now">
-          <Rule id="now">now</Rule>
-          <Project project={kurambit}>
-            <p className="sub">{kurambit.gamesLabel}</p>
-            <ul className="index">
-              {kurambit.games.map((game) => (
-                <Row key={game.name} name={game.name} note={game.line} end={game.engine} />
+        <Section id="now" label="now">
+          <article className="project kurambit" aria-labelledby="kurambit">
+            <div className="project-text">
+              <ProjectHead project={kurambit} />
+              {kurambit.body.map((sentence) => (
+                <p key={sentence}>{sentence}</p>
               ))}
-            </ul>
-          </Project>
-          <Project project={circe}>
-            <pre className="art circe" role="img" aria-label="A spoken request sorted into a question, an operation or work. This one is an operation.">
-              {circeFigure.map((runs, i) => (
-                <span key={i} className="circe-line">
-                  {runs.map(([text, inked], j) => (
-                    <span key={j} className={inked ? "ink" : undefined}>
-                      {text}
-                    </span>
-                  ))}
-                  {"\n"}
-                </span>
-              ))}
-            </pre>
-          </Project>
-        </section>
+            </div>
+            <AsciiArt className="crystal" name="gem" {...art.crystal} />
+            <div className="project-list">
+              <p className="sub">{kurambit.gamesLabel}</p>
+              <ul className="index">
+                {kurambit.games.map((game) => (
+                  <Row key={game.name} name={game.name} note={game.line} end={game.engine} />
+                ))}
+              </ul>
+            </div>
+          </article>
 
-        <section aria-labelledby="earlier">
-          <Rule id="earlier">earlier</Rule>
+          <article className="project" aria-labelledby="circe">
+            <ProjectHead project={circe} />
+            {circe.body.map((sentence) => (
+              <p key={sentence}>{sentence}</p>
+            ))}
+            <AsciiArt className="wave" name="waveform" {...art.waveform} />
+          </article>
+        </Section>
+
+        <Section id="earlier" label="earlier">
           <ul className="index">
             {earlier.map((item) => (
               <Row key={item.name} name={item.name} note={item.line} end={<Links links={item.links} />} />
             ))}
           </ul>
-          <p className="sub">{experiments.label}</p>
-          <p className="index">
+          <p className="index experiments">
+            <span className="dim">{experiments.label}</span>
             <Links links={experiments.links} />
           </p>
-        </section>
+        </Section>
 
-        <section aria-labelledby="work">
-          <Rule id="work">work</Rule>
+        <Section id="work" label="work">
           <ul className="index">
             {experience.map((item) => (
               <Row key={item.where} name={item.where} note={item.what} end={item.when} />
             ))}
           </ul>
-        </section>
+        </Section>
 
-        <footer aria-labelledby="contact">
-          <Rule id="contact">contact</Rule>
+        <Section id="contact" label="contact">
           <dl className="index contact">
             <div>
               <dt>email</dt>
@@ -157,6 +154,10 @@ export default function Home() {
               </div>
             ))}
           </dl>
+        </Section>
+
+        <footer className="colophon">
+          <p>the ascii art is generated in code and drawn live in your browser</p>
         </footer>
       </main>
     </>

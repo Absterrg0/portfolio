@@ -1,12 +1,15 @@
 :root {
   --bg: #f6f5f1;
   --fg: #1a1a18;
+  --art: #3d3c38;
   --dim: #6b6963; /* 5.0:1 on --bg */
-  --rule: #b4b1a9; /* decoration only: leaders, rules, underlines */
-  --column: 42rem;
+  --rule: #b4b1a9; /* decoration only: underlines */
+  --hair: #e2dfd8; /* decoration only: section lines */
+  --page: 55rem;
+  --gutter: 8.5rem;
   --serif: var(--font-serif), Georgia, "Times New Roman", serif;
   --mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  --mono-size: 13px;
+  --mono-size: 12.5px;
   color-scheme: light dark;
 }
 
@@ -14,8 +17,10 @@
   :root {
     --bg: #0f0f0e;
     --fg: #e6e4de;
+    --art: #c9c6be;
     --dim: #8e8c85; /* 5.7:1 on --bg */
     --rule: #4a4843;
+    --hair: #24231f;
   }
 }
 
@@ -35,8 +40,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--serif);
-  font-size: 19px;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.55;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
@@ -51,7 +56,7 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--rule);
-  text-underline-offset: 0.22em;
+  text-underline-offset: 0.24em;
   transition: text-decoration-color 120ms ease;
 }
 
@@ -87,30 +92,35 @@ ul {
   list-style: none;
 }
 
-pre {
-  white-space: pre;
-}
-
 .page {
-  width: calc(var(--column) + 56px);
+  width: calc(var(--page) + 64px);
   max-width: 100%;
   margin: 0 auto;
-  padding: 72px 28px 88px;
+  padding: 64px 32px 72px;
 }
 
 /* everything set in mono */
 
 .meta,
-.rule,
+.label,
 .links,
 .project-meta,
 .sub,
 .index,
-.art {
+.colophon {
   font-family: var(--mono);
   font-size: var(--mono-size);
-  line-height: 1.6;
+  line-height: 1.7;
   font-feature-settings: "calt" 0, "liga" 0;
+}
+
+.meta,
+.label,
+.project-meta,
+.sub,
+.dim,
+.colophon {
+  color: var(--dim);
 }
 
 .links {
@@ -119,151 +129,143 @@ pre {
   gap: 0 1.5ch;
 }
 
-/* hero: the fox on its own line, the name and a short intro under it */
+/* ascii pieces */
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.fox {
-  font-size: 11px;
-  line-height: 1.25;
-  margin-bottom: 36px;
-  /* the drawing's left edge is ragged; nudge it so the body, not the bounding box, sits on the centre line */
-  transform: translateX(-1ch);
-}
-
-h1 {
-  font-size: 46px;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-}
-
-.intro {
-  max-width: 27em;
-  margin-top: 16px;
-  text-wrap: balance;
-}
-
-.hero .meta {
-  margin-top: 14px;
-}
-
-.meta {
-  color: var(--dim);
-}
-
-.art {
-  line-height: 1.25;
+.ascii {
+  color: var(--art);
   user-select: none;
 }
 
-.eye {
-  position: relative;
-}
-
-.eye::after {
-  content: "-";
-  position: absolute;
-  inset: 0;
-  background: var(--bg);
-  opacity: 0;
-  animation: blink 7s ease-in-out 2s infinite;
-}
-
-@keyframes blink {
-  0%,
-  96% {
-    opacity: 0;
-  }
-  97%,
-  98% {
-    opacity: 1;
-  }
-  99%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .eye::after {
-    animation: none;
-  }
-}
-
-/* rules: "-- label ------------" */
-
-.rule {
-  display: flex;
-  gap: 1ch;
-  margin: 64px 0 20px;
-  color: var(--dim);
-  white-space: nowrap;
+.ascii pre {
+  font-family: var(--mono);
+  font-feature-settings: "calt" 0, "liga" 0;
+  line-height: 1;
+  white-space: pre;
   overflow: hidden;
 }
 
-.rule::before,
-.rule::after {
-  color: var(--rule);
+/* the scene and the waveform fill their width: the font size is the width over the columns */
+.scene,
+.wave {
+  container-type: inline-size;
 }
 
-.rule::before {
-  content: "--";
+.scene pre,
+.wave pre {
+  font-size: calc(100cqw / (var(--cols) * 0.6));
 }
 
-.rule::after {
-  content: "------------------------------------------------------------------------------------------------------------";
-  overflow: hidden;
+.ascii-narrow {
+  display: none;
 }
 
-/* kurambit and circe */
+/* hero */
 
-.project + .project {
-  margin-top: 48px;
+.scene {
+  margin-bottom: 40px;
 }
 
-.project-head {
+.hero-line {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 2ch;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.intro {
+  max-width: 31em;
+  margin-top: 14px;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+
+/* sections: the name sits in the left margin */
+
+.section {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+}
+
+.label {
+  padding-top: 0.35em;
+}
+
+/* projects */
+
+.project + .project {
+  margin-top: 64px;
+}
+
+.project-head {
+  margin-bottom: 14px;
 }
 
 h3 {
   font-size: 30px;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .project-meta {
-  color: var(--dim);
-  margin: 2px 0 12px;
+  margin-top: 2px;
 }
 
-.project p {
+.sep {
+  white-space: pre;
+  color: var(--rule);
+}
+
+.project p:not([class]) {
+  max-width: 31em;
   text-wrap: pretty;
 }
 
-.project p + p:not(.sub) {
-  margin-top: 0.55em;
+.project p:not([class]) + p:not([class]) {
+  margin-top: 0.6em;
+}
+
+.kurambit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "text crystal"
+    "list list";
+  column-gap: 32px;
+}
+
+.project-text {
+  grid-area: text;
+}
+
+.crystal {
+  grid-area: crystal;
+  align-self: center;
+}
+
+.crystal pre {
+  font-size: 9px;
+}
+
+.project-list {
+  grid-area: list;
 }
 
 .sub {
-  color: var(--dim);
-  margin: 22px 0 6px;
+  margin: 28px 0 6px;
 }
 
-.circe {
-  margin-top: 22px;
-  color: var(--dim);
-  overflow: hidden;
-}
-
-.circe .ink {
-  color: var(--fg);
+.wave {
+  margin-top: 28px;
 }
 
 /* index lines: name, note, and whatever sits on the right */
@@ -276,7 +278,7 @@ h3 {
 }
 
 .row + .row {
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .row-note {
@@ -285,6 +287,13 @@ h3 {
 
 .row-end {
   text-align: right;
+}
+
+.experiments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2ch;
+  margin-top: 22px;
 }
 
 /* contact: label in grey, link in ink */
@@ -296,7 +305,7 @@ h3 {
 }
 
 .contact div + div {
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .contact dt {
@@ -307,9 +316,80 @@ h3 {
   margin: 0;
 }
 
-/* narrow: each note drops under its name */
+.colophon {
+  margin-top: 96px;
+  padding-left: var(--gutter);
+}
+
+/* tablets: the section names move above their sections */
+
+@media (max-width: 760px) {
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 18px;
+  }
+
+  .colophon {
+    padding-left: 0;
+  }
+}
+
+/* phones */
 
 @media (max-width: 600px) {
+  :root {
+    --mono-size: 12px;
+  }
+
+  body {
+    font-size: 17px;
+  }
+
+  .page {
+    padding: 28px 20px 56px;
+  }
+
+  .ascii-wide {
+    display: none;
+  }
+
+  .ascii-narrow {
+    display: block;
+  }
+
+  .scene {
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  .section {
+    margin-top: 56px;
+  }
+
+  .kurambit {
+    display: block;
+  }
+
+  .crystal {
+    display: none;
+  }
+
+  /* the links get their own line instead of wrapping into the meta */
+  .project-meta .sep {
+    display: none;
+  }
+
+  .project-meta .links {
+    display: flex;
+  }
+
   .row {
     grid-template-columns: minmax(0, 1fr) auto;
   }
@@ -325,48 +405,5 @@ h3 {
 
   .contact div {
     grid-template-columns: 10ch minmax(0, 1fr);
-  }
-}
-
-/* phones */
-
-@media (max-width: 640px) {
-  :root {
-    --mono-size: 12px;
-  }
-
-  body {
-    font-size: 17px;
-  }
-
-  .page {
-    padding: 44px 20px 64px;
-  }
-
-  .fox {
-    font-size: 10px;
-    margin-bottom: 28px;
-  }
-
-  h1 {
-    font-size: 40px;
-  }
-
-  h3 {
-    font-size: 26px;
-  }
-
-  .rule {
-    margin: 52px 0 18px;
-  }
-
-  .circe {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 370px) {
-  .circe {
-    font-size: 10px;
   }
 }
