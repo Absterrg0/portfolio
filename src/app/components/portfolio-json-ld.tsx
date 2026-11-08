@@ -5,9 +5,7 @@ export function PortfolioJsonLd() {
   const projects = [
     { name: kurambit.name, description: kurambit.summary, url: kurambit.links[0].href },
     { name: circe.name, description: circe.summary, url: circe.links[0].href },
-    ...earlier
-      .filter((item) => item.name !== "interfaces")
-      .map((item) => ({ name: item.name, description: item.line, url: item.links[0].href })),
+    ...earlier.map((item) => ({ name: item.name, description: item.line, url: item.links[0].href })),
   ];
   const jsonLd = {
     "@context": "https://schema.org",
