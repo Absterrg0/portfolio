@@ -2,7 +2,7 @@ import { Fox } from "./components/fox";
 import { LocalTime } from "./components/local-time";
 import { PortfolioJsonLd } from "./components/portfolio-json-ld";
 import { circeFigure } from "./data/ascii";
-import { circe, contact, earlier, experience, interfaces, intro, kurambit, site, type Link } from "./data/portfolio";
+import { circe, contact, earlier, experience, experiments, intro, kurambit, site, type Link } from "./data/portfolio";
 
 function Out({ href, children }: { href: string; children: React.ReactNode }) {
   const external = href.startsWith("http");
@@ -34,13 +34,12 @@ function Rule({ id, children }: { id: string; children: string }) {
   );
 }
 
-// One index line: name, a short note, a dot leader, and whatever sits on the right.
-function Row({ name, note, end }: { name: React.ReactNode; note?: React.ReactNode; end?: React.ReactNode }) {
+// One index line: name, a short note, and whatever sits on the right.
+function Row({ name, note, end }: { name: React.ReactNode; note: React.ReactNode; end: React.ReactNode }) {
   return (
     <li className="row">
       <span className="row-name">{name}</span>
-      {note ? <span className="row-note">{note}</span> : null}
-      <span className="row-lead" aria-hidden="true" />
+      <span className="row-note">{note}</span>
       <span className="row-end">{end}</span>
     </li>
   );
@@ -84,14 +83,12 @@ export default function Home() {
       <PortfolioJsonLd />
       <main className="page">
         <header className="hero">
-          <div className="hero-text">
-            <h1>{site.name}</h1>
-            <p>{intro}</p>
-            <p className="meta">
-              {site.location.split(",")[0].toLowerCase()} <LocalTime initialTime={initialIst()} />
-            </p>
-          </div>
           <Fox />
+          <h1>{site.name}</h1>
+          <p className="intro">{intro}</p>
+          <p className="meta">
+            {site.location.split(",")[0].toLowerCase()} <LocalTime initialTime={initialIst()} />
+          </p>
         </header>
 
         <section aria-labelledby="now">
@@ -126,13 +123,11 @@ export default function Home() {
             {earlier.map((item) => (
               <Row key={item.name} name={item.name} note={item.line} end={<Links links={item.links} />} />
             ))}
-            <li className="row row-wide">
-              <span className="row-name">{interfaces.name}</span>
-              <span className="row-note">
-                <Links links={interfaces.links} />
-              </span>
-            </li>
           </ul>
+          <p className="sub">{experiments.label}</p>
+          <p className="index">
+            <Links links={experiments.links} />
+          </p>
         </section>
 
         <section aria-labelledby="work">
@@ -146,12 +141,22 @@ export default function Home() {
 
         <footer aria-labelledby="contact">
           <Rule id="contact">contact</Rule>
-          <ul className="index">
-            <Row name="email" end={<Out href={`mailto:${contact.email}`}>{contact.email}</Out>} />
+          <dl className="index contact">
+            <div>
+              <dt>email</dt>
+              <dd>
+                <Out href={`mailto:${contact.email}`}>{contact.email}</Out>
+              </dd>
+            </div>
             {contact.links.map((link) => (
-              <Row key={link.label} name={link.label} end={<Out href={link.href}>{link.value}</Out>} />
+              <div key={link.label}>
+                <dt>{link.label}</dt>
+                <dd>
+                  <Out href={link.href}>{link.value}</Out>
+                </dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </footer>
       </main>
     </>

@@ -70,6 +70,7 @@ h1,
 h2,
 h3,
 ul,
+dl,
 pre {
   margin: 0;
 }
@@ -118,23 +119,36 @@ pre {
   gap: 0 1.5ch;
 }
 
-/* hero: the name on the left, the fox sitting on the right */
+/* hero: the fox on its own line, the name and a short intro under it */
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  column-gap: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fox {
+  font-size: 11px;
+  line-height: 1.25;
+  margin-bottom: 36px;
+  /* the drawing's left edge is ragged; nudge it so the body, not the bounding box, sits on the centre line */
+  transform: translateX(-1ch);
 }
 
 h1 {
-  font-size: 44px;
+  font-size: 46px;
   line-height: 1.05;
   letter-spacing: -0.015em;
-  margin-bottom: 14px;
 }
 
-.hero-text p + p {
+.intro {
+  max-width: 27em;
+  margin-top: 16px;
+  text-wrap: balance;
+}
+
+.hero .meta {
   margin-top: 14px;
 }
 
@@ -147,19 +161,15 @@ h1 {
   user-select: none;
 }
 
-.fox {
-  font-size: 10px;
-  line-height: 1.25;
-}
-
 .eye {
   position: relative;
 }
 
 .eye::after {
-  content: "--";
+  content: "-";
   position: absolute;
   inset: 0;
+  background: var(--bg);
   opacity: 0;
   animation: blink 7s ease-in-out 2s infinite;
 }
@@ -190,7 +200,7 @@ h1 {
 .rule {
   display: flex;
   gap: 1ch;
-  margin: 56px 0 16px;
+  margin: 64px 0 20px;
   color: var(--dim);
   white-space: nowrap;
   overflow: hidden;
@@ -213,7 +223,7 @@ h1 {
 /* kurambit and circe */
 
 .project + .project {
-  margin-top: 44px;
+  margin-top: 48px;
 }
 
 .project-head {
@@ -239,11 +249,11 @@ h3 {
 
 .sub {
   color: var(--dim);
-  margin: 20px 0 6px;
+  margin: 22px 0 6px;
 }
 
 .circe {
-  margin-top: 20px;
+  margin-top: 22px;
   color: var(--dim);
   overflow: hidden;
 }
@@ -252,74 +262,69 @@ h3 {
   color: var(--fg);
 }
 
-/* index lines: name, note, dot leader, end */
+/* index lines: name, note, and whatever sits on the right */
 
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 15ch minmax(0, 1fr) auto;
+  column-gap: 2ch;
   align-items: baseline;
 }
 
-.row-name {
-  flex: none;
-  width: 15ch;
+.row + .row {
+  margin-top: 2px;
 }
 
 .row-note {
-  flex: 0 1 auto;
-  min-width: 0;
   color: var(--dim);
 }
 
-.row-lead {
-  flex: 1 1 3ch;
-  min-width: 2ch;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0 1ch;
-  color: var(--rule);
-}
-
-.row-lead::after {
-  content: "...................................................................................................................";
-}
-
 .row-end {
-  flex: none;
   text-align: right;
 }
 
-.row-wide .row-note {
-  color: inherit;
+/* contact: label in grey, link in ink */
+
+.contact div {
+  display: grid;
+  grid-template-columns: 15ch minmax(0, 1fr);
+  column-gap: 2ch;
 }
 
-/* narrower than a full index line: notes drop under their names */
+.contact div + div {
+  margin-top: 2px;
+}
 
-@media (max-width: 760px) {
+.contact dt {
+  color: var(--dim);
+}
+
+.contact dd {
+  margin: 0;
+}
+
+/* narrow: each note drops under its name */
+
+@media (max-width: 600px) {
   .row {
-    display: grid;
-    grid-template-columns: auto minmax(3ch, 1fr) auto;
-  }
-
-  .row-name {
-    width: auto;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .row-note {
     grid-row: 2;
     grid-column: 1 / -1;
-    margin-bottom: 8px;
   }
 
-  .row-wide {
-    display: block;
+  .row + .row {
+    margin-top: 10px;
   }
 
-  .row-wide .row-name {
-    display: block;
+  .contact div {
+    grid-template-columns: 10ch minmax(0, 1fr);
   }
 }
 
-/* phones: the fox stacks above the name */
+/* phones */
 
 @media (max-width: 640px) {
   :root {
@@ -331,21 +336,16 @@ h3 {
   }
 
   .page {
-    padding: 36px 20px 64px;
-  }
-
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
+    padding: 44px 20px 64px;
   }
 
   .fox {
-    order: -1;
-    font-size: 9px;
+    font-size: 10px;
     margin-bottom: 28px;
   }
 
   h1 {
-    font-size: 38px;
+    font-size: 40px;
   }
 
   h3 {
@@ -353,7 +353,7 @@ h3 {
   }
 
   .rule {
-    margin: 44px 0 18px;
+    margin: 52px 0 18px;
   }
 
   .circe {
@@ -362,10 +362,6 @@ h3 {
 }
 
 @media (max-width: 370px) {
-  .fox {
-    font-size: 8px;
-  }
-
   .circe {
     font-size: 10px;
   }

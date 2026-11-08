@@ -1,40 +1,29 @@
 // Every piece of art here is plain 7-bit ASCII so it lines up in any monospace font.
 
-// A red fox sitting with its tail around its paws: Kurambit's mascot.
-// ":" is the dark coat, "." the white cheek, bib and tail tip.
-// The two spaces after "':::" on the seventh row are its eye; see `foxEye`.
+// Kurambit's fox, sitting with its tail curled round its front paws.
+// Drawn as an outline; the dots near the tail's end are its white tip.
+// The "o" on the third row is its eye; see `foxEye`.
 export const fox = [
-  "                  /\\         /|",
-  "                 /::\\       /:|",
-  "                /::::\\     /::|",
-  "               /::::::\\   /:::|",
-  "              /::::::::\\ /::::|",
-  "             /::::::::::V:::::\\",
-  "        _.--':::  :::::::::::::\\",
-  "  _.--''::::::::::::::::::::::::\\",
-  "<'-......... .....:::::::::::::::\\",
-  "   `-.............:::::::::::::::\\",
-  "       `--.__.....::::::::::::::::\\",
-  "             |.....::::::::::::::::|",
-  "             |.....::::::::::::::::\\",
-  "             |.....:::::::::::::::::|",
-  "             |.....:::::::::::::::::\\",
-  "             |.....::::::::::::::::::|",
-  "             |.....::::::::::::::::::|",
-  "             |....::::::::::::::::::::\\",
-  "             |....:::::::::::::::::::::|",
-  "             |...::::::::::::::::::::::|     _.--.._",
-  "             |..::::::::::::::::::::::::\\ .-'::::::::`.",
-  "             |.:::::::::::::::::::::::::|/::::::::::::::\\",
-  "             |:::::::::::::::::::::::::::::::::::::::::::|",
-  "             |::::|:::::::::::::::::::::::::::::::::::::/",
-  "       .--.__|____|_______________.--'::::::::::::::::.'",
-  "      (.......::::::::::::::::::::::::::::::::::::::.'",
-  "       `-..______________________________________.-'",
+  "             /\\  /|",
+  "            /  \\/ |",
+  "      _.--'  o    \\",
+  "  <--'             \\",
+  "   `-._            |",
+  "       `-.        (",
+  "         /         \\",
+  "        /           \\",
+  "       (             \\",
+  "       \\              \\",
+  "        \\     .--.     \\",
+  "         | | /          |",
+  "  .-.    | |(          /",
+  " (. .`-'-'--`-.__     /",
+  "  `. . .          `-._/",
+  "    `-.._______..---''",
 ] as const;
 
-// Where the eye sits in `fox`: row, first column, and how many cells it spans.
-export const foxEye = { row: 6, col: 16, width: 2 } as const;
+// Where the eye sits in `fox`: row and column of the single character.
+export const foxEye = { row: 2, col: 13 } as const;
 
 // One spoken request and the three kinds of thing Circe sorts it into.
 // Each row is a list of [text, inked] runs; the inked runs trace the path the request takes.

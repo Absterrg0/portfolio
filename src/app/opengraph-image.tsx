@@ -32,7 +32,7 @@ export default function OpenGraphImage() {
         <div style={{ display: "flex", color: dim }}>full-stack developer, bengaluru</div>
         <div style={{ display: "flex", color: dim }}>kurambit.com / heycirce.com</div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.25, fontSize: 15 }}>
+      <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.25, fontSize: 21 }}>
         {fox.map((row, i) => (
           <div key={i} style={{ display: "flex", whiteSpace: "pre" }}>
             {row || " "}

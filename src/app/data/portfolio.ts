@@ -11,15 +11,15 @@ export const site = {
 } as const;
 
 export const intro =
-  "I'm a full-stack developer. Both of my current projects are open-source apps built on T3 Code.";
+  "I'm a full-stack developer and a computer science student at MSRIT. Right now I'm building two open-source apps on T3 Code.";
 
 export const kurambit = {
   name: "Kurambit",
   summary: "A Linux app that makes games with the coding agent you already use.",
   meta: "linux app, mit license",
   body: [
-    "Kurambit makes games with the coding agent you already use. It builds them in Godot or three.js, and every model it makes in Blender keeps its .blend file and the script that generated it.",
-    "A second session plays each build. Kurambit reverts any build that doesn't win a blind comparison with the last one.",
+    "Kurambit makes games with the coding agent you already use. The agent builds them in Godot or three.js, and every Blender model keeps its .blend file and the script that made it.",
+    "A second session plays every build and reports what it saw. If a build doesn't beat the last one in a blind comparison, Kurambit reverts it.",
   ],
   links: [
     { label: "kurambit.com", href: "https://kurambit.com" },
@@ -27,10 +27,10 @@ export const kurambit = {
   ],
   gamesLabel: "test games it has made",
   games: [
-    { name: "hollow reach", line: "ring three bells in a ruined cliffside monastery", engine: "godot" },
-    { name: "tidewake", line: "a lighthouse keeper's roguelite on a flooded island", engine: "godot" },
-    { name: "lantern hop", line: "catch fireflies before the candle burns out", engine: "three.js" },
-    { name: "fox dash", line: "a fox grabs five gems while three slimes chase it", engine: "three.js" },
+    { name: "hollow reach", line: "ring three bells in a ruined monastery", engine: "godot" },
+    { name: "tidewake", line: "roguelite down flooded floors to a boss", engine: "godot" },
+    { name: "lantern hop", line: "catch fireflies before the candle dies", engine: "three.js" },
+    { name: "fox dash", line: "grab five gems while slimes chase you", engine: "three.js" },
   ],
 } as const;
 
@@ -39,7 +39,8 @@ export const circe = {
   summary: "Runs coding agents by voice, with no LLM inside.",
   meta: "unfinished, built in the open",
   body: [
-    "Circe runs coding agents by voice. It has no LLM of its own. It breaks each request into small questions about what is running and works out the action in code.",
+    "Circe runs coding agents by voice. It has no LLM of its own. It splits each request into small questions about what's running, then picks the action in code.",
+    "When an agent fails, has a question or needs approval, Circe tells you without being asked.",
   ],
   links: [
     { label: "heycirce.com", href: "https://heycirce.com" },
@@ -50,7 +51,7 @@ export const circe = {
 export const earlier = [
   {
     name: "okito",
-    line: "solana payment gateway and its typescript sdk",
+    line: "solana payment gateway and sdk",
     links: [
       { label: "app", href: "https://app.okito.abstergo.fyi/" },
       { label: "sdk", href: "https://okito.abstergo.fyi/" },
@@ -59,7 +60,7 @@ export const earlier = [
   },
   {
     name: "droplert",
-    line: "live site notifications from one npm package",
+    line: "live notifications from one npm package",
     links: [
       { label: "site", href: "https://droplert.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/Alertify" },
@@ -67,7 +68,7 @@ export const earlier = [
   },
   {
     name: "decentrawork",
-    line: "freelance marketplace paid through solana contracts",
+    line: "freelance work paid by solana contracts",
     links: [
       { label: "site", href: "https://decentrawork.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/DecentraWork" },
@@ -75,7 +76,7 @@ export const earlier = [
   },
   {
     name: "justdraw",
-    line: "a sketchbook that saves drawings in your browser",
+    line: "a sketchbook that saves in your browser",
     links: [
       { label: "site", href: "https://justdraw.abstergo.fyi/" },
       { label: "src", href: "https://github.com/Absterrg0/JustDraw" },
@@ -83,8 +84,8 @@ export const earlier = [
   },
 ] as const;
 
-export const interfaces = {
-  name: "interfaces",
+export const experiments = {
+  label: "interface experiments",
   links: [
     { label: "archive 07", href: "https://starwars.abstergo.fyi/" },
     { label: "neoai", href: "https://neoai.abstergo.fyi/" },
@@ -94,9 +95,9 @@ export const interfaces = {
 } as const;
 
 export const experience = [
-  { where: "tb10 platform", what: "tournament platform with real-time game sync", when: "jan-jun 2026" },
-  { where: "octasol", what: "github escrow flow and its solana contracts", when: "jul-aug 2025" },
-  { where: "blolabel", what: "hls video pipeline for an annotation platform", when: "nov 2024-jun 2025" },
+  { where: "tb10 platform", what: "tournaments with real-time game sync", when: "jan-jun 2026" },
+  { where: "octasol", what: "github escrow and its solana contracts", when: "jul-aug 2025" },
+  { where: "blolabel", what: "document annotation and hls video", when: "nov 2024-jun 2025" },
   { where: "msrit", what: "b.tech, computer science", when: "2023-2027" },
 ] as const;
 
